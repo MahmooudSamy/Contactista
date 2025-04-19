@@ -11,4 +11,9 @@
     <PackageReference Include="AutoMapper" Version="14.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Contactista.DataAccess\Contactista.DataAccess.csproj" />
+    <ProjectReference Include="..\Contactista.Domain\Contactista.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

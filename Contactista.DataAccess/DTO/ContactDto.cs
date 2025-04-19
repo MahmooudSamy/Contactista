@@ -5,19 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Contactista.Domain
+namespace Contactista.DataAccess.DTO
 {
-    public class Contact
+    public class ContactDto
     {
-        [Key]
         public int ContactId { get; set; }
 
         [Required]
-        [StringLength(50)]
+        
         public string FullName { get; set; } = default!;
 
         [Required]
-        [StringLength(100)]
+        
         public string Address { get; set; } = default!;
 
         [Required]
