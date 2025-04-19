@@ -1,8 +1,19 @@
+using Autofac;
+using Autofac.Core;
+using Autofac.Extensions.DependencyInjection;
+using Contactista.Domain;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
+{
+    // Register your repositories
+   
+});
 
 var app = builder.Build();
 
@@ -23,7 +34,6 @@ app.MapControllerRoute(
             name: "Default",
             pattern: "{controller}/{action}/{id?}");
 
-app.Run();
 
 app.MapGet("/", () => "Hello World!");
 
