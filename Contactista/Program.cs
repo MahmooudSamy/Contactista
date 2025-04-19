@@ -1,9 +1,15 @@
 using Autofac;
 using Autofac.Core;
 using Autofac.Extensions.DependencyInjection;
+using Contactista.DataAccess;
 using Contactista.Domain;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString = builder.Configuration.GetConnectionString("ContactistaConnectionString");
+builder.Services.AddDbContext<AppDbContext>(options =>
+            options.UseSqlServer(connectionString));
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
@@ -35,6 +41,6 @@ app.MapControllerRoute(
             pattern: "{controller}/{action}/{id?}");
 
 
-app.MapGet("/", () => "Hello World!");
+//app.MapGet("/", () => "Hello World!");
 
 app.Run();

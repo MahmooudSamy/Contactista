@@ -20,8 +20,8 @@ namespace Contactista.DataAccess.DTO
         public string Address { get; set; } = default!;
 
         [Required]
-        [Phone]
+      
         public string PhoneNumber { get; set; } = default!;
-        public string Notes { get; set; } = default!;
+        public string? Notes { get; set; } 
     }
 }
